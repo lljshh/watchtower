@@ -43,3 +43,7 @@
 存在种特殊格式，`type`为`auth`时不带`token`和`id`, 回应的`auth_success`的`data`字段为`token`，并使用`type`而非`id`。
 
 数据包的具体载荷见`org.minelogy.watchtower.Network`
+
+## 依赖
+
+采集系统资源情况依赖`com.sun.management.OperatingSystemMXBean`，仅在Oracle JDK，OpenJDK及其衍生版本上可用

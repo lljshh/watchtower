@@ -173,7 +173,7 @@ public class Network {
             if (!running) return;
             stopHeartbeat();
             getSystemMetrics();
-            scheduler = Executors.newSingleThreadScheduledExecutor();
+            scheduler = Executors.newScheduledThreadPool(2);
             scheduler.scheduleAtFixedRate(this::sendStatus, 0, STATUS_DELAY, TimeUnit.SECONDS);
             scheduler.scheduleAtFixedRate(this::updateSystemMetrics, 0, 1, TimeUnit.SECONDS);
         }

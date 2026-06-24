@@ -7,11 +7,11 @@ import java.lang.management.OperatingSystemMXBean;
 import static org.minelogy.watchtower.Watchtower.LOGGER;
 
 public class SystemMetrics {
-    double cpuLoad;
-    double hostMemoryUsage;
-    long heapUsed;
-    long heapMax;
-    long heapCommitted;
+    final double cpuLoad;
+    final double hostMemoryUsage;
+    final long heapUsed;
+    final long heapMax;
+    final long heapCommitted;
     private static final OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();
     private static final MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
 
