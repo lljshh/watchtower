@@ -5,6 +5,19 @@
 
 使用WebSocket协议向指定的服务器汇报MC服务器性能指标，包括玩家数，最大玩家数，TPS，MSPT，Java的CPU使用情况，堆内存当前大小，堆内存最大值，已使用的堆大小。
 
+## 配置文件
+配置文件在`config/watchtower.json`
+
+示例:
+```json
+{
+  "address": "example.com",
+  "port": 8080,
+  "password": "your_password",
+  "ssl": true
+}
+```
+
 ## 协议说明
 
 主要分为两种，发送和回应。  
