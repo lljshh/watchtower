@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "lemonfate",
+  "version": "${version}",
+  "name": "lemonfate",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "Apache-2.0",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "org.minelogy.watchtower.Watchtower"
+    ]
+  },
+  "mixins": [
+    "watchtower.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
