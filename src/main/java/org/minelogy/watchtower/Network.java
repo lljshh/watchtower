@@ -210,7 +210,7 @@ public class Network {
                 JsonObject err = new JsonObject();
                 err.addProperty("type", "error");
                 err.addProperty("token", authToken);
-                err.addProperty("message", "Missing or invalid 'type' field");
+                err.addProperty("data", "Missing or invalid 'type' field");
                 synchronized (lock_client) {
                     if (client != null && client.isOpen()) client.send(gson.toJson(err));
                 }
@@ -221,7 +221,7 @@ public class Network {
                 JsonObject err = new JsonObject();
                 err.addProperty("type", "error");
                 err.addProperty("token", authToken);
-                err.addProperty("message", "Missing or invalid 'id' field");
+                err.addProperty("data", "Missing or invalid 'id' field");
                 synchronized (lock_client) {
                     if (client != null && client.isOpen()) client.send(gson.toJson(err));
                 }
@@ -239,7 +239,7 @@ public class Network {
                         JsonObject err = new JsonObject();
                         err.addProperty("type", "error");
                         err.addProperty("token", authToken);
-                        err.addProperty("message", "Server metrics not yet available");
+                        err.addProperty("data", "Server metrics not yet available");
                         synchronized (lock_client) {
                             if (client != null && client.isOpen()) client.send(gson.toJson(err));
                         }
@@ -255,7 +255,7 @@ public class Network {
                         JsonObject err = new JsonObject();
                         err.addProperty("type", "error");
                         err.addProperty("token", authToken);
-                        err.addProperty("message", "Server not yet available");
+                        err.addProperty("data", "Server not yet available");
                         synchronized (lock_client) {
                             if (client != null && client.isOpen()) client.send(gson.toJson(err));
                         }
@@ -269,7 +269,7 @@ public class Network {
                     break;
                 case "auth_success":
                     LOGGER.info("Authentication successful");
-                    authToken = json.get("auth_token").getAsString();
+                    authToken = json.get("data").getAsString();
                     startHeartbeat();
                     break;
                 case "auth_fail":
@@ -289,7 +289,7 @@ public class Network {
                     LOGGER.warn("Unknown command type: {}", type);
                     JsonObject error = new JsonObject();
                     error.addProperty("type", "error");
-                    error.addProperty("message", "Unknown command: " + type);
+                    error.addProperty("data", "Unknown command: " + type);
                     synchronized (lock_client) {
                         if (client != null && client.isOpen()) client.send(gson.toJson(error));
                     }
@@ -314,7 +314,7 @@ public class Network {
     }
     private JsonObject buildStatusPayload(JsonElement replay, Object data) {
         JsonObject payload = new JsonObject();
-        payload.add("reply", replay);
+        payload.add("id", replay);
         payload.addProperty("token", authToken);
         payload.add("data", gson.toJsonTree(data));
         return payload;

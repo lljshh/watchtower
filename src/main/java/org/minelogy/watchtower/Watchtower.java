@@ -28,7 +28,7 @@ public class Watchtower implements ModInitializer {
             Watchtower.server = server;
             serverMaxPlayers = server.getMaxPlayers();
         });
-        String configPath = Paths.get(FabricLoader.getInstance().getConfigDir().toString(), "lemonfate.json").toString();
+        String configPath = Paths.get(FabricLoader.getInstance().getConfigDir().toString(), "watchtower.json").toString();
         File f = new File(configPath);
         if (!f.exists()) {
             try {
